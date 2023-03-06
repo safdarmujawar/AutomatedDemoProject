@@ -13,13 +13,13 @@ public class LoginTestase extends BaseTestCase{
 		
 		System.out.println("redirected to Login page page");
 		Thread.sleep(3000);
-		driver.findElement(By.id("j_username")).sendKeys("bbmhft_77");
+		driver.findElement(By.xpath(loc.getProperty("locator_userid"))).sendKeys(cred.getProperty("userid"));
 		
-		driver.findElement(By.id("j_password")).sendKeys("bbnl4629");
+		driver.findElement(By.xpath(loc.getProperty("locator_password"))).sendKeys(cred.getProperty("password"));
 		
 		Thread.sleep(3000);
 		
-		driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div[2]/div[2]/div[1]/form/fieldset/div[3]/button")).click();
+		driver.findElement(By.xpath(loc.getProperty("locator_click"))).click();
 		
 		System.out.println("user successfully redirected to home page");
 		String expectedTitle="Dash Board";
@@ -33,15 +33,18 @@ public class LoginTestase extends BaseTestCase{
 	@Test
 	public static void LoginTestIncorrectPassword() throws InterruptedException {
 		
-       driver.findElement(By.id("j_username")).sendKeys("bbmhft_77");
+        driver.findElement(By.xpath(loc.getProperty("locator_userid"))).sendKeys(cred.getProperty("userid"));
 		
-		driver.findElement(By.id("j_password")).sendKeys("bbnl4623");
+		driver.findElement(By.xpath(loc.getProperty("locator_password"))).sendKeys(cred.getProperty("password1"));
+		
 		
 		Thread.sleep(3000);
 		
-		driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div[2]/div[2]/div[1]/form/fieldset/div[3]/button")).click();
+		driver.findElement(By.xpath(loc.getProperty("locator_click"))).click();
 		
-		WebElement errormessage=driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div[2]/center/h4/font"));
+		Thread.sleep(3000);
+		
+		WebElement errormessage=driver.findElement(By.xpath(cred.getProperty("error_msg")));
 		String ErrorMessegeText= errormessage.getText();
 		System.out.println(ErrorMessegeText);
 		

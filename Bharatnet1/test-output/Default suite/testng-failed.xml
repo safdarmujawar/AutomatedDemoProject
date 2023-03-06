@@ -6,7 +6,6 @@
       <class name="Testcases.LoginTestase">
         <methods>
           <include name="teardown"/>
-          <include name="loginTest"/>
           <include name="LoginTestIncorrectPassword"/>
           <include name="setup"/>
         </methods>
