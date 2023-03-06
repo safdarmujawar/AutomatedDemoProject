@@ -5,8 +5,8 @@
     <classes>
       <class name="Testcases.LoginTestase">
         <methods>
+          <include name="LogoutFunctionality"/>
           <include name="teardown"/>
-          <include name="LoginTestIncorrectPassword"/>
           <include name="setup"/>
         </methods>
       </class> <!-- Testcases.LoginTestase -->

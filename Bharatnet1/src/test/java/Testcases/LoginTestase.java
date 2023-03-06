@@ -9,7 +9,7 @@ import BaseTest.BaseTestCase;
 
 public class LoginTestase extends BaseTestCase{
 	@Test
-	public static void loginTest() throws InterruptedException {
+	public static void loginTestValidCredientials() throws InterruptedException {
 		
 		System.out.println("redirected to Login page page");
 		Thread.sleep(3000);
@@ -31,7 +31,7 @@ public class LoginTestase extends BaseTestCase{
 		
 	}
 	@Test
-	public static void LoginTestIncorrectPassword() throws InterruptedException {
+	public static void LoginTestIncorrectCredentials() throws InterruptedException {
 		
         driver.findElement(By.xpath(loc.getProperty("locator_userid"))).sendKeys(cred.getProperty("userid"));
 		
@@ -47,6 +47,29 @@ public class LoginTestase extends BaseTestCase{
 		WebElement errormessage=driver.findElement(By.xpath(cred.getProperty("error_msg")));
 		String ErrorMessegeText= errormessage.getText();
 		System.out.println(ErrorMessegeText);
+		
+	}
+	@Test
+	public static void LogoutFunctionality() throws InterruptedException {
+		
+        driver.findElement(By.xpath(loc.getProperty("locator_userid"))).sendKeys(cred.getProperty("userid"));
+		
+		driver.findElement(By.xpath(loc.getProperty("locator_password"))).sendKeys(cred.getProperty("password"));
+		
+		Thread.sleep(3000);
+		
+		driver.findElement(By.xpath(loc.getProperty("locator_click"))).click();
+		
+		driver.findElement(By.xpath(loc.getProperty("locator_Bbmhft_77"))).click();
+		driver.findElement(By.xpath(loc.getProperty("locator_logoutLink"))).click();
+		
+		System.out.println("user successfully redirected to Login page");
+		String expectedTitle="Home";
+		String LoginwebpageTitle=driver.getTitle();
+		System.out.println(LoginwebpageTitle);
+		Thread.sleep(3000);
+		
+		Assert.assertEquals(expectedTitle,LoginwebpageTitle);
 		
 	}
 
